@@ -1,2 +1,2 @@
 all:
-	g++ main.c -Wall -Werror -o Geometria
+	g++ GeometryaMOIA.cpp -lm -Wall -Werror -o Geometria
