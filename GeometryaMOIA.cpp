@@ -8,32 +8,11 @@
 #include <string>
 #include <time.h>
 #include <vector>
-using namespace std;
-float pi = 3.1415926535897932384626433832795;
-float X_drugoe, Y_drugoe, R_drugoe;
+#include <Library.h>
 
-struct Circle {
-    float X = 0, Y = 0, R = 0;
-    Circle(float X1, float Y1, float R1) : X(X1), Y(Y1), R(R1)
-    {
-    }
-};
+using namespace std;
 
 vector<Circle> Vec_of_Circles;
-
-size_t FindCaseInsens(std::string str, std::string substr)
-{
-    std::transform(str.begin(), str.end(), str.begin(), tolower);
-    std::transform(substr.begin(), substr.end(), substr.begin(), tolower);
-    return str.find(substr, 0);
-}
-
-void Obrabotka(string str)
-{
-    if (FindCaseInsens(str, "circle") != string::npos) {
-        sscanf(str.data(), "circle(%f%f,%f)", &X_drugoe, &Y_drugoe, &R_drugoe);
-    }
-}
 
 void File_Reading()
 {
