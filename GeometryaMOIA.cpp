@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 
+#include <Library.h>
 #include <algorithm>
 #include <cstring>
 #include <fstream>
@@ -8,7 +9,6 @@
 #include <string>
 #include <time.h>
 #include <vector>
-#include <Library.h>
 
 using namespace std;
 
@@ -18,8 +18,7 @@ void File_Reading()
 {
     string Chitaem;
     ifstream Vvod("input.txt");
-    while (!Vvod.eof()) {
-        getline(Vvod, Chitaem);
+    while (getline(Vvod, Chitaem)) {
         Obrabotka(Chitaem);
         Vec_of_Circles.emplace_back(X_drugoe, Y_drugoe, R_drugoe);
     }
@@ -34,5 +33,15 @@ int main(int argc, char* argv[])
         printf("Perimetr of Circle: %f\n", Perimetr);
         float Ploshad = pi * circle.R * circle.R;
         printf("Ploshad of Circle: %f\n", Ploshad);
+        for (auto& circle_next : Vec_of_Circles) {
+            if (circle != circle_next && CircleCircleIntersect(circle, circle_next)) {
+         
+                printf("Peresechenie\n");
+                printf("Circle(%f %f,%f)\n\n",
+                       circle_next.X,
+                       circle_next.Y,
+                       circle_next.R);
+            }
+        }
     }
 }
